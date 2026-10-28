@@ -24,10 +24,11 @@ import mysql.connector
 
 def get_db():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password=os.environ.get("MYSQL_PASSWORD"),
-        database="book_management"
+        host=os.environ["MYSQL_HOST"],
+        port=int(os.environ.get("MYSQL_PORT", "3306")),
+        user=os.environ["MYSQL_USER"],
+        password=os.environ["MYSQL_PASSWORD"],
+        database=os.environ["MYSQL_DATABASE"]
     )
 import os
 from flask import abort
